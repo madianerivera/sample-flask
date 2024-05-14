@@ -1,0 +1,27 @@
+name: Deploy changes
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install docker
+        run: |
+          sudo apt update
+          sudo apt install apt-transport-https ca-certificates curl software-properties-common
+          curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+          sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+          apt-cache policy docker-ce
+          sudo systemctl status docker
+      
+      - name: Checkout code
+        uses: actions/checkout@v4
+          
+      - name: Docker build and run
+        run: |
+          ls
+          docker build -t hello-world-webapp .
+          docker images
+          docker run -p 8080:5000 -d hello-world-webapp
+          
