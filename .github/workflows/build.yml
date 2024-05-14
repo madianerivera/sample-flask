@@ -26,5 +26,3 @@ jobs:
           docker image tag hello-world-webapp madianerivera/hello-world-webapp:latest
           # docker push madianerivera/hello-world-webapp:latest
           docker run -p 8080:5000 -d hello-world-webapp
-
-          # 120.29.72.240
