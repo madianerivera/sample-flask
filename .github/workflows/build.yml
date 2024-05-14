@@ -20,7 +20,6 @@ jobs:
           
       - name: Docker build and run
         run: |
-          ls
           docker build -t hello-world-webapp .
           docker images
           docker image tag hello-world-webapp madianerivera/hello-world-webapp:latest
